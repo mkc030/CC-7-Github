@@ -4,14 +4,16 @@
 #                                                          #
 ############################################################
 
-# Add in your name
-# Add in purpose of this script
+# Michelle
+# Figuring out Git finally...
 # To learn about version control on github
 
 # git config --global user.email "you@example.com"
 # git config --global user.name "Your Name"
 
 # Libraries ----
+library(tidyverse)
+library(ggplot2)
 
 # Functions ----
 # This is a ggplot function for a nice clean theme
@@ -34,10 +36,16 @@ theme.clean <- function(){
 }
 
 # Load data ----
-setwd("your file path")
+setwd("~/Documents/R projects/CodingClub tutorial")
 temp_elevation <- read.csv("temp_elevation.csv")
 
 # Make a plot showing how soil temperature changes with elevation ----
+temp.el <- ggplot (temp_elevation, aes(x = Elevation.m, y = Soil.temp.mean)) +
+   geom_point(colour = "#8B4513") +
+   geom_smooth(method = lm, colour = "#8B4513", fill = "#8B4513", alpha = 0.6) +
+   labs(x = "Elevation (m)", y = "Mean soil temperature (°C)") +
+   theme.clean()
+temp.el
 
 # Save your plot in your project directory
 
